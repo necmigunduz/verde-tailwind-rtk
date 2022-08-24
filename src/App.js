@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import AddPost from './features/AddPost';
 import PostList from './features/posts/PostList';
+import AddPost from './features/AddPost';
+import EditPost from './features/EditPost';
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<PostList />} />
         <Route path='/add-post' element={<AddPost />} />
+        <Route path='/edit-post/:id' element={<EditPost />} />
       </Routes>   
     </div>
   );
