@@ -1,8 +1,10 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button";
-import { Posts } from "../../components/posts";
+// import { Posts } from "../../components/posts";
 import RenderCard from "../../components/renderCard";
 const PostList = () => { 
+  const Posts = useSelector(store => store.posts)
   const cards = RenderCard(Posts)
   
   return (

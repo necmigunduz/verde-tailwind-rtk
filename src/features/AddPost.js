@@ -3,16 +3,25 @@ import TextField from "../components/TextField"
 import Button from "../components/Button"
 import TextArea from "../components/TextArea"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { addPost } from "./posts/postSlice"
 
 const AddPost = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const [values, setValues] = useState({
     title: '',
-    post: ''
+    body: ''
   })
   const handleClick = (e) => {
-    setValues({title: '', post:''})
-    console.log(values)
+    setValues({title: '', body:''})
+    // console.log(values)
+    dispatch(addPost({
+      userId: 1,
+      id: 3,
+      title: values.title,
+      body: values.body
+    }))
     navigate('/')
   } 
   const handleKeyDown = (e) => {
@@ -32,10 +41,10 @@ const AddPost = () => {
         /><br />
         <TextArea 
             label="Post"
-            value={values.post}
+            value={values.body}
             onChange = {(e) => setValues({
               ...values,
-              post: e.target.value
+              body: e.target.value
             })}
             onKeyDown={handleKeyDown}
             inputProps={{type:'text', placeholder:'Write body of your post here'}}

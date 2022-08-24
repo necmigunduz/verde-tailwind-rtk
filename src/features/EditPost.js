@@ -6,14 +6,16 @@ import { useNavigate } from "react-router-dom"
 
 const EditPost = () => {
   const navigate = useNavigate();
+  
   const [values, setValues] = useState({
     title: '',
     post: ''
   })
   const handleEdit = (e) => {
     setValues({title: '', post:''})
-    console.log(values)
+    // console.log(values)
     navigate('/')
+    console.log(navigate('/'))
   } 
   const handleKeyDown = (e) => {
     e.target.style.height = 'inherit';
