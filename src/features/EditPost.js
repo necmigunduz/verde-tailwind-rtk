@@ -15,13 +15,13 @@ const EditPost = () => {
   const currentPost = posts.filter(post => post.id === Number(params.id))
   const {title, body} = currentPost[0]
   const [values, setValues] = useState({
-    title: title,
-    body: body
+    title,
+    body
   })
   const handleEdit = (e) => {
     setValues({title: '', body:''})
     dispatch(editPost({
-      id: params.id,
+      id: Number(params.id),
       title: values.title,
       body: values.body,
     }))
