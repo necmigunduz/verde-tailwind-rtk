@@ -5,6 +5,7 @@ import TextArea from "../components/TextArea"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { addPost } from "./posts/postSlice"
+import { v4 as uuidv4 } from "uuid"
 
 const AddPost = () => {
   const dispatch = useDispatch()
@@ -15,10 +16,9 @@ const AddPost = () => {
   })
   const handleClick = (e) => {
     setValues({title: '', body:''})
-    // console.log(values)
     dispatch(addPost({
       userId: 1,
-      id: 3,
+      id: uuidv4(),
       title: values.title,
       body: values.body
     }))

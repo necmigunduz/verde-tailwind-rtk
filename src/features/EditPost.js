@@ -2,20 +2,30 @@ import { useState } from "react"
 import TextField from "../components/TextField"
 import Button from "../components/Button"
 import TextArea from "../components/TextArea"
-import { useNavigate } from "react-router-dom"
+import { editPost } from "./posts/postSlice"
+import { useNavigate, useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
 
 const EditPost = () => {
   const navigate = useNavigate();
-  
+  const posts = useSelector(store => store.posts);
+  const params = useParams();
+  const dispatch = useDispatch();
+
+  const currentPost = posts.filter(post => post.id === Number(params.id))
+  const {title, body} = currentPost[0]
   const [values, setValues] = useState({
-    title: '',
-    post: ''
+    title: title,
+    body: body
   })
   const handleEdit = (e) => {
-    setValues({title: '', post:''})
-    // console.log(values)
+    setValues({title: '', body:''})
+    dispatch(editPost({
+      id: params.id,
+      title: values.title,
+      body: values.body,
+    }))
     navigate('/')
-    console.log(navigate('/'))
   } 
   const handleKeyDown = (e) => {
     e.target.style.height = 'inherit';
@@ -30,14 +40,14 @@ const EditPost = () => {
               ...values,
               title: e.target.value
             })}
-            inputProps={{type:'text', placeholder:'Write title of your post here', height:'500px'}}
+            inputProps={{type:'text', placeholder:'Write title of your post here', height:'150px'}}
         /><br />
         <TextArea 
             label="Post"
-            value={values.post}
+            value={values.body}
             onChange = {(e) => setValues({
               ...values,
-              post: e.target.value
+              body: e.target.value
             })}
             onKeyDown={handleKeyDown}
             inputProps={{type:'text', placeholder:'Write body of your post here'}}

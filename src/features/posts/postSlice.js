@@ -1,4 +1,4 @@
-import { createAction, createSlice } from '@reduxjs/toolkit'
+import { createAction, createSlice, current } from '@reduxjs/toolkit'
 
 const initialState  = [
     {
@@ -58,9 +58,17 @@ export const postSlice = createSlice({
     reducers: {
       addPost: (state,action)=> {
         state.push(action.payload)
+      },
+      editPost: (state,action)=> {
+        const {id, title, body} = action.payload;
+        const currentPost = state.find(post => post.id === id)
+        if(currentPost) {
+          currentPost.title = title;
+          currentPost.body = body;
+        }
       }
     }
 })
 
-export const { addPost } = postSlice.actions;
+export const { addPost, editPost } = postSlice.actions;
 export default postSlice.reducer;
