@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import { Posts } from "../../components/posts";
 import RenderCard from "../../components/renderCard";
@@ -7,9 +8,9 @@ const PostList = () => {
   return (
     <>
       <div>
-        <Button>Add new post</Button>
+        <Link to='/add-post'><Button>Add new post</Button></Link>
       </div>
-      <div className="grid md:grid-cols-3">
+      <div className="grid md:grid-cols-4">
         {Posts.length ? (
           cards
         ) : (
