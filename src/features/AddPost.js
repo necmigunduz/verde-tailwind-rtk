@@ -17,7 +17,7 @@ const AddPost = () => {
   const handleClick = (e) => {
     setValues({title: '', body:''})
     dispatch(addPost({
-      userId: 1,
+      userId: uuidv4(),
       id: uuidv4(),
       title: values.title,
       body: values.body

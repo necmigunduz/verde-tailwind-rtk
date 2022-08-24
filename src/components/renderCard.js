@@ -1,6 +1,13 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { deletePost } from "../features/posts/postSlice";
 
 const RenderCard = (posts) => {
+  const dispatch = useDispatch();
+  const handleDeletePost = (id) => {
+    dispatch(deletePost({id: id}))
+    console.log(id)
+  }
   const cards = posts.map((post) => (
     <div key={post.id} className="p-2 flex justify-between flex-col border border-zinc-500 border-8 m-1 bg-slate-400 rounded">
       <h3 className="font-bold text-sm text-gray-500 text-right pb-1 border-b-2 border-slate-300">
@@ -25,7 +32,9 @@ const RenderCard = (posts) => {
         </button>
         </Link>
         
-        <button>
+        <button
+          onClick={() => handleDeletePost(post.id)}
+        >
           <svg
             fill="#000000"
             xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +48,8 @@ const RenderCard = (posts) => {
       </div>
     </div>
   ));
-  return cards
+  
+  return cards.reverse()
 };
 
 export default RenderCard;
