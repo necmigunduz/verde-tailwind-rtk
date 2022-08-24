@@ -15,6 +15,10 @@ const AddPost = () => {
     console.log(values)
     navigate('/')
   } 
+  const handleKeyDown = (e) => {
+    e.target.style.height = 'inherit';
+    e.target.style.height = `${e.target.scrollHeight}px`;
+  }
   return (
     <div className="mt-10 max-w-xl mx-auto">
         <TextField 
@@ -24,7 +28,7 @@ const AddPost = () => {
               ...values,
               title: e.target.value
             })}
-            inputProps={{type:'text', placeholder:'Write your title of your post here'}}
+            inputProps={{type:'text', placeholder:'Write title of your post here', height:'500px'}}
         /><br />
         <TextArea 
             label="Post"
@@ -33,6 +37,7 @@ const AddPost = () => {
               ...values,
               post: e.target.value
             })}
+            onKeyDown={handleKeyDown}
             inputProps={{type:'text', placeholder:'Write body of your post here'}}
         />
         <Button onClick={handleClick}>
