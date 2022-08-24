@@ -1,6 +1,6 @@
 const RenderCard = (posts) => {
   const cards = posts.map((post) => (
-    <div className="p-2 flex justify-between flex-col border border-zinc-500 border-8 m-1 bg-slate-400 rounded">
+    <div key={post.id} className="p-2 flex justify-between flex-col border border-zinc-500 border-8 m-1 bg-slate-400 rounded">
       <h3 className="font-bold text-sm text-gray-500 text-right pb-1 border-b-2 border-slate-300">
         {post.title}
       </h3>
