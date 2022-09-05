@@ -3,7 +3,7 @@
 This is an app using CRUD operations with Redux Toolkit and React. For styling the project, Tailwind CSS is used. A user can create posts, view all the posts, edit posts, and delete posts.
 
 #### Page screenshot: 
-![screenshot](https://github.com/necmigunduz/scroll-horizontally/blob/master/large_screen.png)
+![screenshot](https://github.com/necmigunduz/verde-tailwind-rtk/blob/master/screenshot.png)
 
 ## Built With
 
